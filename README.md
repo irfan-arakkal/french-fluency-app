@@ -45,8 +45,8 @@ Many people learning French know vocabulary and grammar from apps, but they rare
 
 | Phase | Goal | Status |
 | --- | --- | --- |
-| 0 | JavaScript basics | In progress |
-| 1 | Project setup (client and server) | Not started |
+| 0 | JavaScript basics | Done |
+| 1 | Project setup (client and server) | In progress |
 | 2 | Sign up and login | Not started |
 | 3 | Find a partner | Not started |
 | 4 | Voice calls | Not started |
