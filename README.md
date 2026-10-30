@@ -46,8 +46,8 @@ Many people learning French know vocabulary and grammar from apps, but they rare
 | Phase | Goal | Status |
 | --- | --- | --- |
 | 0 | JavaScript basics | Done |
-| 1 | Project setup (client and server) | In progress |
-| 2 | Sign up and login | Not started |
+| 1 | Project setup (client and server) | Done |
+| 2 | Sign up and login | In progress |
 | 3 | Find a partner | Not started |
 | 4 | Voice calls | Not started |
 | 5 | Launch | Not started |
@@ -56,11 +56,35 @@ Many people learning French know vocabulary and grammar from apps, but they rare
 
 ```
 french-fluency-app/
+├── client/     # React frontend (Vite)
+├── server/     # Node.js + Express backend
 ├── phase0/     # JavaScript practice exercises
 └── README.md
 ```
 
-The `client` (React) and `server` (Node.js) folders will be added in Phase 1.
+## How to run
+
+You need [Node.js](https://nodejs.org) installed. Use two terminals.
+
+**Terminal 1: start the server**
+
+```
+cd server
+npm install
+node index.js
+```
+
+The server runs on http://localhost:3000. Test it at http://localhost:3000/api/hello
+
+**Terminal 2: start the website**
+
+```
+cd client
+npm install
+npm run dev
+```
+
+Open http://localhost:5173. The page shows a message loaded from the server.
 
 ## Author
 

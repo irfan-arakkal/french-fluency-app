@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("Loading...");
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/hello")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  }, []);
 
   return (
     <main>
       <h1>French Fluency App</h1>
-      <p>Practice speaking French with learners at your level.</p>
-      <button onClick={() => setCount(count + 1)}>
-        Practice sessions: {count}
-      </button>
+      <p>{message}</p>
     </main>
   );
 }
