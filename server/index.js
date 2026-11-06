@@ -5,11 +5,10 @@ const app = express();
 const PORT = 3000;
 
 app.use(cors());
-
+app.use(express.json());
+const user = [];
 app.get("/api/hello", (req, res) => {
-  setTimeout(()=>{
   res.json({ message: "Bonjour from the server" });
-  },2000);
 });
 
 app.listen(PORT, () => {
