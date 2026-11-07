@@ -21,8 +21,6 @@ const user = { id: users.length + 1, nickname, email, level };
   users.push(user);
 
   res.status(201).json(user);
-  console.log(nickname, email, level);
-  res.json({ ok: true });
 });
 
 app.listen(PORT, () => {
