@@ -6,21 +6,32 @@ function App() {
   const [email, setEmail] = useState("");
   const [level, setLevel] = useState("A1");
   const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false); // new (Fix 3)
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true); // new (Fix 3)
 
-    const res = await fetch("http://localhost:3000/api/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nickname, email, level }),
-    });
-    const data = await res.json();
+    try { // new (Fix 2)
+      const res = await fetch("http://localhost:3000/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nickname, email, level }),
+      });
+      const data = await res.json();
 
-    if (res.ok) {
-      setResult(`Account created for ${data.nickname} (${data.level})`);
-    } else {
-      setResult(data.error);
+      if (res.ok) {
+        setResult(`Account created for ${data.nickname} (${data.level})`);
+        setNickname(""); // new (Fix 1)
+        setEmail(""); // new (Fix 1)
+        setLevel("A1"); // new (Fix 1)
+      } else {
+        setResult(data.error);
+      }
+    } catch { // new (Fix 2)
+      setResult("Could not reach the server. Is it running?");
+    } finally { // new (Fix 3)
+      setLoading(false);
     }
   }
 
@@ -49,7 +60,9 @@ function App() {
           <option>C1</option>
           <option>C2</option>
         </select>
-        <button type="submit">Sign up</button>
+        <button type="submit" disabled={loading}> {/* new (Fix 3) */}
+          {loading ? "Signing up..." : "Sign up"}
+        </button>
       </form>
 
       <p>{result}</p>
