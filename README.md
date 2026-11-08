@@ -20,7 +20,8 @@ Many people learning French know vocabulary and grammar from apps, but rarely ge
 
 - ✅ Express server with a REST API
 - ✅ React frontend (Vite) connected to the backend
-- 🚧 User registration (in progress)
+- ✅ Sign-up form and API with input validation, error handling and duplicate-submit protection (users stored in memory for now)
+- 🚧 PostgreSQL database, password hashing and login (in progress)
 
 ## Key Features
 
@@ -141,6 +142,13 @@ french-fluency-app/
 └── README.md
 ```
 
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/hello` | Health check: returns a welcome message |
+| POST | `/api/signup` | Creates a user from `nickname`, `email` and `level`. Returns `201` with the new user, or `400` if a field is missing |
+
 ## Running Locally
 
 You need [Node.js](https://nodejs.org) installed. Use two terminals.
@@ -163,7 +171,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173. The page shows a message loaded from the server.
+Open http://localhost:5173 and create an account with the sign-up form.
 
 ## Project Goals
 
